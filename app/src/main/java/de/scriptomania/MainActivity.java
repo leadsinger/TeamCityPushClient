@@ -1,5 +1,6 @@
 package de.scriptomania;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 
-public class MainActivity extends AppCompatActivity implements MessageHandler {
+public class MainActivity extends Activity implements MessageHandler {
 
     private PushConfiguration aerogearPushConfiguration;
     private static final String REGISTRAR_ID = "teamCityPushService";
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements MessageHandler {
                     .addSenderId(aerogearPushConfiguration.getSenderID())
                     .setVariantID(aerogearPushConfiguration.getVariantID())
                     .setSecret(aerogearPushConfiguration.getSecret())
+                    .setAlias("")
                     .asRegistrar();
         } catch (URISyntaxException e) {
             e.printStackTrace();
